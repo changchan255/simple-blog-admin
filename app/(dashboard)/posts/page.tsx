@@ -2,7 +2,7 @@ import PostCard from "@/app/components/PostCard";
 
 async function getPosts() {
   const res = await fetch("http://localhost:3000/api/posts", {
-  next: { revalidate: 10 }, 
+  cache: "no-store", 
 });
   return res.json();
 }

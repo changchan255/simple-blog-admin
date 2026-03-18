@@ -1,4 +1,6 @@
+import { PostProvider } from "@/app/context/PostContext";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 export default function DashboardLayout({
   children,
@@ -6,9 +8,18 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex">
-      <Sidebar />
-      <main>{children}</main>
-    </div>
+    <PostProvider>
+      <div className="flex h-screen bg-gray-50">
+        <Sidebar />
+
+        <div className="flex-1 flex flex-col">
+          <Header />
+
+          <main className="flex-1 p-6 overflow-y-auto">
+            {children}
+          </main>
+        </div>
+      </div>
+    </PostProvider>
   );
 }

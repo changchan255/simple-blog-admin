@@ -23,7 +23,7 @@ export default function Sidebar() {
         <Link href="/posts" className={linkClass("/posts")}>
           All Posts
         </Link>
-        <Link href="/posts/new" className={linkClass("/posts/new")}>
+        <Link href="/posts/create" className={linkClass("/posts/create")}>
           Add Post
         </Link>
       </nav>
