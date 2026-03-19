@@ -1,11 +1,12 @@
+// @ts-ignore
+import { render, screen } from "@testing-library/react";
+import PostCard from "../app/components/PostCard";
+
 jest.mock("next-auth", () => ({
   getServerSession: jest.fn(() =>
     Promise.resolve({ user: { name: "Admin" } })
   ),
 }));
-
-import { render, screen } from "@testing-library/react";
-import PostCard from "@/app/components/PostCard";
 
 describe("PostCard", () => {
   it("renders post title", () => {

@@ -8,7 +8,7 @@ jest.mock("next-auth", () => ({
   ),
 }));
 
-import { GET } from "@/app/api/posts/route";
+import { GET } from "../app/api/posts/route";
 
 describe("GET /api/posts", () => {
   it("returns list of posts", async () => {
