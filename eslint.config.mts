@@ -5,23 +5,17 @@ import pluginReact from "eslint-plugin-react";
 
 export default tseslint.config(
   js.configs.recommended,
-
   ...tseslint.configs.recommended,
-  
   pluginReact.configs.flat.recommended,
-
   {
-    files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
       globals: {
         ...globals.browser,
-        ...globals.node, 
+        ...globals.node,
       },
     },
     rules: {
-      "react/react-in-jsx-scope": "off", 
-    },
+       "react/react-in-jsx-scope": "off",
+    }
   }
 );
