@@ -1,35 +1,40 @@
-let posts = [
-  { id: '1', title: 'Post 1', content: 'Demo' },
-  { id: '2', title: 'Post 2', content: 'Demo' },
-];
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { getPosts, createPost, updatePost } from "@/lib/posts";
 
 export async function GET() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return Response.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
+  const posts = await getPosts();
   return Response.json(posts);
 }
 
 export async function POST(req: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return Response.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json();
-
-  const maxId = posts.length
-    ? Math.max(...posts.map((p) => Number(p.id)))
-    : 0;
-
-  const newPost = {
-    id: (maxId + 1).toString(),
-    ...body,
-  };
-
-  posts.push(newPost);
+  const newPost = await createPost(body);
 
   return Response.json(newPost);
 }
 
 export async function PUT(req: Request) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return Response.json({ message: "Unauthorized" }, { status: 401 });
+  }
+
   const body = await req.json();
 
-  posts = posts.map((p) =>
-    p.id === body.id ? { ...p, ...body } : p
-  );
-
-  return Response.json({ success: true });
+  await updatePost(body);
+    return Response.json({ message: "Post updated" });
 }

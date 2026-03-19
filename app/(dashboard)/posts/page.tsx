@@ -1,15 +1,17 @@
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { getPosts } from "@/lib/posts";
+import { redirect } from "next/navigation";
 import PostCard from "@/app/components/PostCard";
 
-async function getPosts() {
-  const res = await fetch("http://localhost:3000/api/posts", {
-  cache: "no-store", 
-});
-  return res.json();
-}
-
 export default async function PostsPage() {
-  const posts = await getPosts();
+  const session = await getServerSession(authOptions);
 
+  if (!session) {
+    redirect("/login");
+  }
+
+  const posts = await getPosts();
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-blue-600 mb-6">
@@ -18,7 +20,7 @@ export default async function PostsPage() {
 
       <div className="grid gap-4">
         {posts.map((p: any) => (
-          <PostCard key={p.id} id={p.id} />
+          <PostCard key={p.id} post={p} />
         ))}
       </div>
     </div>
