@@ -18,10 +18,10 @@ export default async function Home() {
         <h1 className="text-3xl font-bold">Welcome to Blog Admin!</h1>
         <Greeting />
         <div className="flex items-center justify-center gap-4">
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
             <Link href="/login">Login</Link>
           </button>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded">
+          <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-blue-700">
             <Link href="/register">Register</Link>
           </button>
         </div>

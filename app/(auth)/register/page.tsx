@@ -35,7 +35,7 @@ export default async function RegisterPage() {
           required
         />
 
-        <button className="bg-blue-600 text-white w-full py-2 rounded">
+        <button className="bg-blue-600 text-white w-full py-2 rounded cursor-pointer hover:bg-blue-700">
           Register
         </button>
       </form>

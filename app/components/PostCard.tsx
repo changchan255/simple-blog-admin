@@ -16,7 +16,7 @@ export default function PostCard({ post }: { post: any }) {
 
       <div className="flex items-center gap-3">
         <button
-          className="bg-blue-600 text-white text-sm px-3 py-1 rounded hover:bg-blue-700"
+          className="bg-blue-600 text-white text-sm px-3 py-1 rounded hover:bg-blue-700 cursor-pointer"
         >
         <Link
           href={`/posts/${post.id}/edit`}
@@ -28,7 +28,7 @@ export default function PostCard({ post }: { post: any }) {
         <form action={deletePostAction}>
           <input type="hidden" name="id" value={post.id} />
           <button
-            className="bg-red-600 text-white text-sm px-3 py-1 rounded hover:bg-red-700"
+            className="bg-red-600 text-white text-sm px-3 py-1 rounded hover:bg-red-700 cursor-pointer"
           >
             Delete
           </button>

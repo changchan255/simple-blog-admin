@@ -19,7 +19,7 @@ export default function Header() {
           </span>
           <button
               onClick={() => signOut({ callbackUrl: "/login" })}
-              className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+              className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 cursor-pointer text-sm"
             >
               Logout
             </button>

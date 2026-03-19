@@ -1,51 +1,47 @@
-import fs from "fs/promises";
-import path from "path";
-
-const filePath = path.join(process.cwd(), "data/posts.json");
+import { prisma } from "./prisma";
 
 export async function getPosts() {
-  const data = await fs.readFile(filePath, "utf-8");
-  return JSON.parse(data);
+  return prisma.post.findMany();
 }
 
-export async function getPost(id: string) {
-  const posts = await getPosts();
-  return posts.find((p: any) => p.id === id);
+export async function getPost(id: string | undefined) {
+  if (!id) return null; 
+
+  const postId = Number(id);
+  if (isNaN(postId)) return null; 
+
+  return prisma.post.findUnique({
+    where: { id: postId },
+  });
 }
 
-export async function createPost(data: any) {
-  const posts = await getPosts();
+ export async function createPost(data: any) {
+  const { authorId, ...rest } = data;
 
-  const maxId = posts.length
-    ? Math.max(...posts.map((p: any) => Number(p.id)))
-    : 0;
+  if (!authorId) {
+    throw new Error("authorId is missing");
+  }
 
-  const newPost = {
-    id: (maxId + 1).toString(),
-    ...data,
-  };
-
-  const updated = [...posts, newPost];
-
-  await fs.writeFile(filePath, JSON.stringify(updated, null, 2));
-
-  return newPost;
+  return prisma.post.create({
+    data: {
+      ...rest,
+      author: {
+        connect: { id: Number(authorId) },
+      },
+    },
+  });
 }
 
 export async function updatePost(data: any) {
-  const posts = await getPosts();
-
-  const updated = posts.map((p: any) =>
-    p.id === data.id ? { ...p, ...data } : p
-  );
-
-  await fs.writeFile(filePath, JSON.stringify(updated, null, 2));
+  const { id, ...rest } = data;
+  return prisma.post.update({
+    where: { id: Number(id) },
+    data: rest,
+  });
 }
 
 export async function deletePost(id: string) {
-  const posts = await getPosts();
-
-  const updated = posts.filter((p: any) => p.id !== id);
-
-  await fs.writeFile(filePath, JSON.stringify(updated, null, 2));
+  return prisma.post.delete({
+    where: { id: Number(id) },
+  });
 }

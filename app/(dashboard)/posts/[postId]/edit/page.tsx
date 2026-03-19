@@ -34,12 +34,12 @@ export default async function EditPage({
 
         <textarea
           name="content"
-          defaultValue={post.content}
+          defaultValue={post.content ?? ""}
           className="w-full border p-2 rounded h-32"
           required
         />
 
-        <button className="bg-blue-600 text-white px-4 py-2 rounded">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer">
           Update
         </button>
       </form>

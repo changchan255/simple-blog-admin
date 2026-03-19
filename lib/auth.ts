@@ -1,31 +1,50 @@
-import CredentialsProvider from "next-auth/providers/credentials";
 import { NextAuthOptions } from "next-auth";
-import { findUser } from "./users";
+import CredentialsProvider from "next-auth/providers/credentials";
+import { getUser } from "./users";
 
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
+        username: {},
+        password: {},
       },
       async authorize(credentials) {
-        const user = await findUser(credentials?.username || "");
+        const user = await getUser(credentials!.username);
 
-        if (user && user.password === credentials?.password) {
-          return {
-            id: user.id,
-            name: user.username,
-            role: user.role,
-          };
-        }
+        if (!user) return null;
+        if (user.password !== credentials!.password) return null;
 
-        return null;
+        return {
+          id: user.id.toString(),
+          name: user.username,
+          role: user.role,
+        };
       },
     }),
   ],
+
   session: { strategy: "jwt" },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        const u = user as any; 
+
+        token.id = u.id;
+        token.role = u.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.role = token.role as string;
+      }
+      return session;
+    },
+  },
+
   pages: { signIn: "/login" },
 };
-

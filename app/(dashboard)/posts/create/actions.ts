@@ -23,7 +23,7 @@ export async function createPostAction(formData: FormData) {
     throw new Error("Content is required");
   }
 
-  await createPost({ title, content });
+  await createPost({ title, content, authorId: Number(session.user.id), });
 
   redirect('/posts');
 }
