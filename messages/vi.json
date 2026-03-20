@@ -17,7 +17,8 @@
     "register": "Đăng ký",
     "username": "Tên đăng nhập",
     "password": "Mật khẩu",
-    "loginFailed": "Đăng nhập thất bại"
+    "loginFailed": "Đăng nhập thất bại",
+    "noAccount": "Chưa có tài khoản?"
   },
   "Sidebar": {
     "title": "Blog Admin",
@@ -34,7 +35,8 @@
     "notFound": "Không tìm thấy bài viết",
     "view": "Nhấp để xem chi tiết",
     "edit": "Sửa",
-    "delete": "Xóa"
+    "delete": "Xóa",
+    "loading": "Đang tải..."
   },
    "Post": {
     "edit": "Sửa",

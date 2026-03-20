@@ -17,7 +17,8 @@
     "register": "Register",
     "username": "Username",
     "password": "Password",
-    "loginFailed": "Login failed"
+    "loginFailed": "Login failed",
+    "noAccount": "Don't have an account?"
   },
   "Sidebar": {
     "title": "Blog Admin",
@@ -34,7 +35,8 @@
     "notFound": "Post not found",
     "view": "Click to view details",
     "edit": "Edit",
-    "delete": "Delete"
+    "delete": "Delete",
+    "loading": "Loading..."
   },
   "Post": {
     "edit": "Edit",
