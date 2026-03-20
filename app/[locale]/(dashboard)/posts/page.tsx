@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { getPosts } from "@/lib/posts";
 import { redirect } from "next/navigation";
-import PostCard from "@/app/components/PostCard";
+import PostList from "@/app/components/PostList";
 import { getTranslations, getLocale } from "next-intl/server";
 
 export default async function PostsPage() {
@@ -14,19 +14,13 @@ export default async function PostsPage() {
     redirect(`/${locale}/login`);
   }
 
-  const posts = await getPosts();
-
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold text-blue-600 mb-6">
         {t("all")}
       </h1>
 
-      <div className="grid gap-4">
-        {posts.map((p: any) => (
-          <PostCard key={p.id} post={p} />
-        ))}
-      </div>
+      <PostList/>
     </div>
   );
 }

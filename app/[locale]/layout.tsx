@@ -1,6 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { notFound } from 'next/navigation';
-import Providers from '../provider';
+import Providers from '../providers';
 
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'vi' }];

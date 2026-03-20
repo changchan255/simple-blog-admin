@@ -1,4 +1,4 @@
-import { PostProvider } from "@/app/context/PostContext";
+import PostProvider from "@/app/PostProvider";
 import Sidebar from "@/app/components/Sidebar";
 import Header from "@/app/components/Header";
 

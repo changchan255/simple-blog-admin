@@ -1,9 +1,18 @@
-import Link from "next/link";
-import { deletePostAction } from "../[locale]/(dashboard)/posts/actions";
-import { getTranslations } from 'next-intl/server';
+'use client';
 
-export default async function PostCard({ post }: { post: any }) {
-  const t = await getTranslations('Post');
+import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { deletePostThunk } from "@/lib/features/postSlice";
+import type { AppDispatch } from "@/lib/store";
+import { useTranslations } from "next-intl";
+
+export default function PostCard({ post }: { post: any }) {
+  const dispatch = useDispatch<AppDispatch>();
+  const t = useTranslations('Post');
+
+  const handleDelete = () => {
+    dispatch(deletePostThunk(post.id));
+  };
 
   return (
     <div className="flex items-center justify-between p-4 bg-white rounded-xl border shadow-sm">
@@ -23,13 +32,13 @@ export default async function PostCard({ post }: { post: any }) {
         >
           {t('edit')}
         </Link>
-
-        <form action={deletePostAction}>
-          <input type="hidden" name="id" value={post.id} />
-          <button className="bg-red-600 text-white text-sm px-3 py-1 rounded hover:bg-red-700">
-            {t('delete')}
-          </button>
-        </form>
+        
+        <button
+          onClick={handleDelete}
+          className="bg-red-600 text-white text-sm px-3 py-1 rounded hover:bg-red-700"
+        >
+          {t('delete')}
+        </button>
       </div>
     </div>
   );
