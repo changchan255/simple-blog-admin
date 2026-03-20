@@ -1,5 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 export default function Greeting() {
-  return <p className="text-lg">Hello from Client Component</p>;
+  const t = useTranslations('Greeting');
+
+  return <p className="text-lg">{t('text')}</p>;
 }

@@ -1,0 +1,47 @@
+{
+  "Greeting": {
+    "text": "Hello from Client Component"
+  },
+  "Home": {
+    "welcome": "Welcome to Blog Admin!",
+    "login": "Login",
+    "register": "Register"
+  },
+  "Header": {
+    "dashboard": "Dashboard",
+    "hello": "Hello, {name}",
+    "logout": "Logout"
+  },
+  "Auth": {
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "loginFailed": "Login failed"
+  },
+  "Sidebar": {
+    "title": "Blog Admin",
+    "allPosts": "All Posts",
+    "addPost": "Add Post"
+  },
+  "Posts": {
+    "all": "All Posts",
+    "add": "Add Post",
+    "title": "Title",
+    "content": "Content",
+    "create": "Create",
+    "update": "Update",
+    "notFound": "Post not found",
+    "view": "Click to view details",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "Post": {
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "Click to view details"
+  },
+  "Common": {
+    "loading": "Loading..."
+  }
+}

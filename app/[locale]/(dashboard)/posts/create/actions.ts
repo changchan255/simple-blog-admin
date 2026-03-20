@@ -4,12 +4,14 @@ import { createPost } from '@/lib/posts';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { redirect } from 'next/navigation';
+import { getLocale } from 'next-intl/server';
 
 export async function createPostAction(formData: FormData) {
+  const locale = await getLocale();
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect('/login');
+    redirect(`/${locale}/login`);
   }
 
   const title = formData.get('title') as string;
@@ -25,5 +27,5 @@ export async function createPostAction(formData: FormData) {
 
   await createPost({ title, content, authorId: Number(session.user.id), });
 
-  redirect('/posts');
+  redirect(`/${locale}/posts`);
 }

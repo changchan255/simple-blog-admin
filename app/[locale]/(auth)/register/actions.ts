@@ -2,8 +2,11 @@
 
 import { createUser } from "@/lib/users";
 import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
 
 export async function registerAction(formData: FormData) {
+  const locale = await getLocale();
+
   const username = formData.get("username") as string;
   const password = formData.get("password") as string;
 
@@ -13,5 +16,5 @@ export async function registerAction(formData: FormData) {
 
   await createUser({ username, password });
 
-  redirect("/login");
+  redirect(`/${locale}/login`);
 }
