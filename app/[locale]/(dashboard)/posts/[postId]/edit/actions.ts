@@ -4,12 +4,14 @@ import { updatePost } from "@/lib/posts";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
+import { getLocale } from "next-intl/server";
 
 export async function updatePostAction(formData: FormData) {
+  const locale = await getLocale();
   const session = await getServerSession(authOptions);
 
   if (!session) {
-    redirect("/login");
+    redirect(`/${locale}/login`);
   }
 
   const id = formData.get("id") as string;
@@ -26,5 +28,5 @@ export async function updatePostAction(formData: FormData) {
 
   await updatePost({ id, title, content });
 
-  redirect("/posts");
+  redirect(`/${locale}/posts`);
 }

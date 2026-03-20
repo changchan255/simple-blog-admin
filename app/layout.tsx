@@ -1,6 +1,5 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import Providers from "./provider";
 
 export const metadata: Metadata = {
   title: {
@@ -15,13 +14,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <Providers>
-          {children}
-        </Providers>
-      </body>
-    </html>
-  );
+  return children;
 }

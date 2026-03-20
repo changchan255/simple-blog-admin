@@ -1,0 +1,47 @@
+{
+  "Greeting": {
+    "text": "Xin chào từ Client Component"
+  },
+  "Home": {
+    "welcome": "Chào mừng đến với Blog Admin!",
+    "login": "Đăng nhập",
+    "register": "Đăng ký"
+  },
+  "Header": {
+    "dashboard": "Dashboard",
+    "hello": "Xin chào, {name}",
+    "logout": "Đăng xuất"
+  },
+  "Auth": {
+    "login": "Đăng nhập",
+    "register": "Đăng ký",
+    "username": "Tên đăng nhập",
+    "password": "Mật khẩu",
+    "loginFailed": "Đăng nhập thất bại"
+  },
+  "Sidebar": {
+    "title": "Blog Admin",
+    "allPosts": "Tất cả bài viết",
+    "addPost": "Thêm bài viết"
+  },
+  "Posts": {
+    "all": "Tất cả bài viết",
+    "add": "Thêm bài viết",
+    "title": "Tiêu đề",
+    "content": "Nội dung",
+    "create": "Tạo",
+    "update": "Cập nhật",
+    "notFound": "Không tìm thấy bài viết",
+    "view": "Nhấp để xem chi tiết",
+    "edit": "Sửa",
+    "delete": "Xóa"
+  },
+   "Post": {
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "view": "Nhấp để xem chi tiết"
+  },
+  "Common": {
+    "loading": "Đang tải..."
+  }
+}

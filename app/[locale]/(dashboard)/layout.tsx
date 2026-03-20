@@ -1,6 +1,6 @@
-import { PostProvider } from "@/app/context/PostContext";
-import Sidebar from "../components/Sidebar";
-import Header from "../components/Header";
+import PostProvider from "@/app/PostProvider";
+import Sidebar from "@/app/components/Sidebar";
+import Header from "@/app/components/Header";
 
 export default function DashboardLayout({
   children,
